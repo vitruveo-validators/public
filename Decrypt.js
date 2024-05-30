@@ -34,6 +34,18 @@ Wallet.fromV3(keystore, password).then(wallet => {
     // Extract the private key
     const privateKey = wallet.getPrivateKey().toString('hex');
     console.log('Private Key:', privateKey);
+
+    // Set a timeout to clear sensitive information after 2 minutes
+    setTimeout(() => {
+        console.log('Flushing memory...');
+        wallet = null;
+        keystoreContent = null;
+        password = null;
+        keystore = null;
+        privateKey = null;
+        console.log('Memory flushed.');
+    }, 120000); // 120000 milliseconds = 2 minutes
+
 }).catch(error => {
     console.error('Error decrypting keystore:', error);
 });
