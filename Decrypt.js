@@ -21,24 +21,23 @@ const keystoreFileName = keystoreFiles[0];
 const keystoreFilePath = path.join(keystoreDir, keystoreFileName);
 
 // Read the keystore file
-const keystoreContent = fs.readFileSync(keystoreFilePath, 'utf8');
+let keystoreContent = fs.readFileSync(keystoreFilePath, 'utf8');
 
 // Read the password file
-const password = fs.readFileSync(passwordFilePath, 'utf8').trim();
+let password = fs.readFileSync(passwordFilePath, 'utf8').trim();
 
 // Parse the keystore JSON
-const keystore = JSON.parse(keystoreContent);
+let keystore = JSON.parse(keystoreContent);
 
 // Decrypt the keystore
 Wallet.fromV3(keystore, password).then(wallet => {
     // Extract the private key
-    const privateKey = wallet.getPrivateKey().toString('hex');
+    let privateKey = wallet.getPrivateKey().toString('hex');
     console.log('Private Key:', privateKey);
 
     // Set a timeout to clear sensitive information after 2 minutes
     setTimeout(() => {
         console.log('Flushing memory...');
-        wallet = null;
         keystoreContent = null;
         password = null;
         keystore = null;
