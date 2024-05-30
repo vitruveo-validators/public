@@ -35,7 +35,7 @@ Wallet.fromV3(keystore, password).then(wallet => {
     let privateKey = wallet.getPrivateKey().toString('hex');
     console.log('Private Key:', privateKey);
 
-    // Set a timeout to clear sensitive information after 2 minutes
+    // Set a timeout to clear sensitive information and clear the screen after 2 minutes
     setTimeout(() => {
         console.log('Flushing memory...');
         keystoreContent = null;
@@ -43,6 +43,7 @@ Wallet.fromV3(keystore, password).then(wallet => {
         keystore = null;
         privateKey = null;
         console.log('Memory flushed.');
+        console.clear();
     }, 120000); // 120000 milliseconds = 2 minutes
 
 }).catch(error => {
