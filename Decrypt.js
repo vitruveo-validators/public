@@ -44,7 +44,7 @@ Wallet.fromV3(keystore, password).then(wallet => {
         privateKey = null;
         console.log('Memory flushed.');
         console.clear();
-    }, 120000); // 120000 milliseconds = 2 minutes
+    }, 60000); // 60000 milliseconds = 1 minute
 
 }).catch(error => {
     console.error('Error decrypting keystore:', error);
