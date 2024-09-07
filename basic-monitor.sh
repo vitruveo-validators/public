@@ -17,7 +17,7 @@ if [ -z "$PID" ]; then
 
         echo "***************************************************************************"
         echo
-        echo  "Critical: YOUR VITRUVEO VALIDATOR 'name' GETH IS NOT RUNNING"
+        echo  "Critical: YOUR VITRUVEO VALIDATOR *name* GETH IS NOT RUNNING"
         echo
         echo "***************************************************************************"
 
@@ -25,14 +25,14 @@ if [ -z "$PID" ]; then
 fi
 
 # Monitors peer list for a value of  0
-output=$(/home/validatoradmin/vitruveo-protocol/build/bin/geth --exec "admin.peers.length" attach http://localhost:8545)
+output=$(./vitruveo-protocol/build/bin/geth --exec "admin.peers.length" attach http://localhost:8545)
 peers=$(echo "$output" | grep -o -E '[0-9]+')
 
 if [ "$peers" -eq 0 ]; then
 
         echo "*************************************************"
         echo
-        echo "Critical: YOUR VALIDATOR 'name' HAS NO PEERS"
+        echo "Critical: YOUR VALIDATOR *name* HAS NO PEERS"
         echo
         echo "*************************************************"
 
