@@ -4,7 +4,7 @@
 # Version: 1.0
 # Last Modified: May 2024
 # Author: Nathan B 
-# Contributors: Vtech team
+# Contributors: CdNode team
 
 
 #!/bin/bash
@@ -17,7 +17,7 @@ if [ -z "$PID" ]; then
 
         echo "***************************************************************************"
         echo
-        echo  "Critical: YOUR VITRUVEO VALIDATOR PROCESS GETH IS NOT RUNNING"
+        echo  "Critical: YOUR VALIDATOR "name" GETH IS NOT RUNNING"
         echo
         echo "***************************************************************************"
 
@@ -32,7 +32,7 @@ if [ "$peers" -eq 0 ]; then
 
         echo "*************************************************"
         echo
-        echo "Critical: YOUR VALIDATOR HAS NO PEERS"
+        echo "Critical: YOUR VALIDATOR "name" HAS NO PEERS"
         echo
         echo "*************************************************"
 
