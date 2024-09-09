@@ -18,7 +18,7 @@ if [ -z "$PID" ]; then
         echo "***************************************************************************"
         echo
         echo  "Critical: YOUR VITRUVEO VALIDATOR <NODE_NAME> GETH IS NOT RUNNING"
-        echo  "DiscordHandle: <user>"
+        echo   "DiscordHandle: <user>"
         echo
         echo "***************************************************************************"
 
