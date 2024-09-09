@@ -17,7 +17,7 @@ if [ -z "$PID" ]; then
 
         echo "***************************************************************************"
         echo
-        echo   "Critical: YOUR VITRUVEO VALIDATOR <NODE_NAME> GETH IS NOT RUNNING"
+        echo  "Critical: YOUR VITRUVEO VALIDATOR <NODE_NAME> GETH IS NOT RUNNING"
         echo  "DiscordHandle: <user>"
         echo
         echo "***************************************************************************"
@@ -33,7 +33,7 @@ if [ "$peers" -eq 0 ]; then
 
         echo "*************************************************"
         echo
-        echo   "Critical: YOUR VALIDATOR <NODE_NAME> HAS NO PEERS"
+        echo  "Critical: YOUR VALIDATOR <NODE_NAME> HAS NO PEERS"
         echo  "DiscordHandle: <user>"
         echo
         echo "*************************************************"
