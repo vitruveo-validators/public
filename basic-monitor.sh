@@ -15,11 +15,12 @@ PID=$(pgrep $PROCESS_NAME)
 
 if [ -z "$PID" ]; then
 
-        echo "***************************************************************************"
+        echo "********************************************************************************"
         echo
-        echo  "Critical: YOUR VITRUVEO VALIDATOR *name* GETH IS NOT RUNNING"
+        echo  "Critical: YOUR VITRUVEO VALIDATOR <NODE_NAME> GETH IS NOT RUNNING"
+        echo  "Discord Handle: <user>"
         echo
-        echo "***************************************************************************"
+        echo "********************************************************************************"
 
  exit 0
 fi
@@ -30,11 +31,12 @@ peers=$(echo "$output" | grep -o -E '[0-9]+')
 
 if [ "$peers" -eq 0 ]; then
 
-        echo "*************************************************"
+        echo "******************************************************"
         echo
-        echo "Critical: YOUR VALIDATOR *name* HAS NO PEERS"
+        echo "Critical: YOUR VALIDATOR <NODE_NAME> HAS NO PEERS"
+        echo  "Discord Handle: <user>"
         echo
-        echo "*************************************************"
+        echo "******************************************************"
 
  exit 0
 fi
@@ -44,24 +46,28 @@ CPU_USAGE=$(ps -p $PID -o %cpu | grep -v CPU | awk '{print $1}')
 
 if (( $(echo "$CPU_USAGE > 51" | bc -l) )); then
   echo "Warning: CPU usage of $PROCESS_NAME is over 50%!"
+  echo  "Discord Handle: <user>"
 fi
 
 MEM_USAGE=$(ps -p $PID -o %mem | grep -v MEM | awk '{print $1}')
 
 if (( $(echo "$MEM_USAGE > 51" | bc -l) )); then
   echo "Warning: Memory usage of $PROCESS_NAME is over 50%!"
+  echo  "Discord Handle: <user>"
 fi
 
 CPU_USAGE=$(ps -p $PID -o %cpu | grep -v CPU | awk '{print $1}')
 
 if (( $(echo "$CPU_USAGE > 81" | bc -l) )); then
   echo "Critical: CPU usage of $PROCESS_NAME is now over 80%!"
+  echo  "Discord Handle: <user>"
 fi
 
 MEM_USAGE=$(ps -p $PID -o %mem | grep -v MEM | awk '{print $1}')
 
 if (( $(echo "$MEM_USAGE > 81" | bc -l) )); then
   echo "Critical: Memory usage of $PROCESS_NAME is now over 80%!"
+  echo  "Discord Handle: <user>"
 fi
 
 # Get the total MB consumed on the Ubuntu Server and report if it drops below 40% and/or 10%
@@ -71,6 +77,7 @@ free_memory_percent=$((100 - $used_memory*100/$total_memory))
 
 if ((free_memory_percent < 40)); then
     echo "Warning: Free memory on Ubuntu has dropped below 40%."
+    echo  "Discord Handle: <user>"
 fi
 
 total_memory=$(free -m | awk 'NR==2{print $2}')
@@ -79,6 +86,7 @@ free_memory_percent=$((100 - $used_memory*100/$total_memory))
 
 if ((free_memory_percent < 10)); then
     echo "Critical: Free memory on Ubuntu has dropped below 10%."
+    echo  "Discord Handle: <user>"
 fi
 
 # Monitor Disk Free Space and report if free space goes below 50% and/or 15%
@@ -87,6 +95,7 @@ free_space=$((100 - disk_usage))
 
 if ((free_space <= 50)); then
     echo "Warning: Free disk space is less than or equal to 50%."
+    echo  "Discord Handle: <user>"
 
 fi
 
@@ -95,6 +104,7 @@ free_space=$((100 - disk_usage))
 
 if ((free_space <= 15)); then
     echo "Critical: Free disk space is now less than or equal to 15%."
+    echo  "Discord Handle: <user>"
 
 fi
 
@@ -112,6 +122,7 @@ elif [[ $network_consumption_today == *"GiB"* ]]; then
 value=$(echo $network_consumption_today | sed 's/ GiB//')
 if (( $(echo "$value > 5" | bc -l) )); then
     echo "Warning: Network consumption today has exceeded 5 GiB/s ; an average range is between 2GiB/s >> 3 GiB/s per day"
+    echo  "Discord Handle: <user>"
 
 fi
 fi
