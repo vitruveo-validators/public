@@ -84,10 +84,10 @@ used_memory=$(free -m | awk 'NR==2{print $3}')
 free_memory_percent=$((100 - $used_memory*100/$total_memory))
 
 if ((free_memory_percent < 40)); then
-    echo "----------------------------------------------------------"
-    echo "Warning: Free memory on Ubuntu has dropped below 40%."
-    echo "Discord User: <user>"
-    echo "----------------------------------------------------------"
+  echo "----------------------------------------------------------"
+  echo "Warning: Free memory on Ubuntu has dropped below 40%."
+  echo "Discord User: <user>"
+  echo "----------------------------------------------------------"
 fi
 
 total_memory=$(free -m | awk 'NR==2{print $2}')
@@ -95,10 +95,10 @@ used_memory=$(free -m | awk 'NR==2{print $3}')
 free_memory_percent=$((100 - $used_memory*100/$total_memory))
 
 if ((free_memory_percent < 10)); then
-    echo "----------------------------------------------------------"
-    echo "Critical: Free memory on Ubuntu has dropped below 10%."
-    echo "Discord User: <user>" 
-    echo "----------------------------------------------------------"
+  echo "----------------------------------------------------------"
+  echo "Critical: Free memory on Ubuntu has dropped below 10%."
+  echo "Discord User: <user>" 
+  echo "----------------------------------------------------------"
 fi
 
 # Monitor Disk Free Space and report if free space goes below 50% and/or 15%
@@ -106,10 +106,10 @@ disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
 free_space=$((100 - disk_usage))
 
 if ((free_space <= 50)); then
-    echo "----------------------------------------------------------"
-    echo "Warning: Free disk space is less than or equal to 50%."
-    echo "Discord User: <user>"
-    echo "----------------------------------------------------------"
+  echo "----------------------------------------------------------"
+  echo "Warning: Free disk space is less than or equal to 50%."
+  echo "Discord User: <user>"
+  echo "----------------------------------------------------------"
 
 fi
 
@@ -117,17 +117,17 @@ disk_usage=$(df / | tail -1 | awk '{print $5}' | sed 's/%//')
 free_space=$((100 - disk_usage))
 
 if ((free_space <= 15)); then
-    echo "-------------------------------------------------------------"
-    echo "Critical: Free disk space is now less than or equal to 15%."
-    echo "Discord User: <user>"
-    echo "-------------------------------------------------------------"
+  echo "-------------------------------------------------------------"
+  echo "Critical: Free disk space is now less than or equal to 15%."
+  echo "Discord User: <user>"
+  echo "-------------------------------------------------------------"
 
 fi
 
 # Run vnstat to collect the network MiB traffic for the current day and alert if it exceeds 500MiBs
 if ! command -v vnstat &> /dev/null; then
-    echo "vnstat could not be found, attempting to install..."
-    sudo apt-get install vnstat -y
+  echo "vnstat could not be found, attempting to install..."
+  sudo apt-get install vnstat -y
 fi
 
 network_consumption_today=$(vnstat --oneline | awk -F\; '{print $6}')
@@ -137,10 +137,10 @@ elif [[ $network_consumption_today == *"GiB"* ]]; then
 
 value=$(echo $network_consumption_today | sed 's/ GiB//')
 if (( $(echo "$value > 5" | bc -l) )); then
-    echo "--------------------------------------------------------------------------------------------------------------------"
-    echo "Warning: Network consumption today has exceeded 5 GiB/s ; an average range is between 2GiB/s >> 3 GiB/s per day"
-    echo "Discord User: <user>"
-    echo "--------------------------------------------------------------------------------------------------------------------"
+  echo "--------------------------------------------------------------------------------------------------------------------"
+  echo "Warning: Network consumption today has exceeded 5 GiB/s ; an average range is between 2GiB/s >> 3 GiB/s per day"
+  echo "Discord User: <user>"
+  echo "--------------------------------------------------------------------------------------------------------------------"
 
 fi
 fi
