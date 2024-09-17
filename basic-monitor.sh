@@ -1,7 +1,7 @@
 ################################
 # Complete all-in-1 monitoring #
 ################################
-# Version: 1.2
+# Version: 1.3
 # Last Modified: Sep 2024
 # Author: Nathan B 
 # Contributors: CdNode team
@@ -18,7 +18,7 @@ if [ -z "$PID" ]; then
         echo "-----------------------------------------------------------------------------"
         echo
         echo  "Critical: YOUR VITRUVEO VALIDATOR <NODE_NAME> GETH IS NOT RUNNING"
-        echo  "DiscordHandle: <user>"
+        echo  "Discord User: <user>"
         echo
         echo "-----------------------------------------------------------------------------"
 
@@ -34,7 +34,7 @@ if [ "$peers" -eq 0 ]; then
         echo "-----------------------------------------------------------------------------"
         echo
         echo  "Critical: YOUR VALIDATOR <NODE_NAME> HAS NO PEERS"
-        echo  "DiscordHandle: <user>"
+        echo  "Discord User: <user>"
         echo
         echo "-----------------------------------------------------------------------------"
 
