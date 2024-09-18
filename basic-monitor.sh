@@ -9,6 +9,10 @@
 
 #!/bin/bash
 
+#Discord ID
+
+DISCORD_ID="AD_ID"
+
 # Querying the status of GETH
 PROCESS_NAME="geth"
 PID=$(pgrep $PROCESS_NAME)
