@@ -16,7 +16,7 @@ USED_MEM_GB=$(echo "scale=2; $USED_MEM / 1024" | bc)
 
 # Check if remaining memory is less than 10%
 if (( $(echo "$PERCENTAGE < 10" | bc -l) )); then
-    CRITICAL_MESSAGE="<@${USER_ID}>\n\nCritical❗Only ${PERCENTAGE}% memory remaining on your Node!\nUsed: ${USED_MEM_GB}GB\nTotal: $(echo "scale=2; $TOTAL_MEM / 1024" | bc)GB"
+    CRITICAL_MESSAGE="<@${USER_ID}>\n\nCritical❗Only ${PERCENTAGE}% memory remaining on your Node.\nUsed: ${USED_MEM_GB}GB\nTotal: $(echo "scale=2; $TOTAL_MEM / 1024" | bc)GB."
 
     # Send critical alert to Discord
     curl -X POST -H "Content-Type: application/json" -d "{\"content\": \"${CRITICAL_MESSAGE}\"}" "$WEBHOOK_URL"
